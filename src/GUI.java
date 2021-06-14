@@ -28,7 +28,7 @@ public class GUI extends JPanel implements ActionListener {
 
 	static Time time = new Time();
 	Counter kms = new Counter(); // KALAN MAYIN SAYISI 
-	MineSweeper ms;
+	Game ms;
 	
 
 	ImageIcon img;
@@ -36,7 +36,7 @@ public class GUI extends JPanel implements ActionListener {
 
 	
 
-	public GUI(MineSweeper game) { 
+	public GUI(Game game) { 
 		JPanel jp = new JPanel();
 		ms = game;
 		time.start();

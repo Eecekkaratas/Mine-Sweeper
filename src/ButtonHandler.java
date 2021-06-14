@@ -40,7 +40,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	ImageIcon img_happy = new ImageIcon("happy2.png");
 
 	public ButtonInfo msg;
-	// private Counter kms;
+	// private KalanMineSayýsý kms;
 	private Font font;
 	// private GUI gui;
 
@@ -57,7 +57,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		msg = new ButtonInfo();
-		// kms = new Counter();
+		// kms = new KalanMineSayýsý();
 		// gui = new GUI();
 
 		img_flag = new ImageIcon("flag.png");
@@ -153,7 +153,14 @@ public class ButtonHandler implements MouseListener, ActionListener {
 				} else {
 					if (e.getSource() instanceof ButtonClass) {
 						ButtonClass[][] buttons = msg.getButtonInfoY();
-						
+						// buttons[row][col].setBackground(Color.red);
+
+						// button = (JButton) e.getSource();
+						/*
+						 * open(row, col); open(row-1,col-1); open(row+1,col+1); open(row-1,col+1);
+						 * open(row+1,col-1); open(row - 1, col); open(row + 1, col); open(row, col +
+						 * 1); open(row, col - 1);
+						 */
 
 						if (grid.getCellContent(row, col) == 0) {
 							clear(row, col);
@@ -162,7 +169,8 @@ public class ButtonHandler implements MouseListener, ActionListener {
 						}
 
 						msg.setButtonInfoY(buttons);
-						
+						// button.setEnabled(false);
+						// System.out.println(e.getButton());
 					}
 				}
 				button.setLeftCick(true);
