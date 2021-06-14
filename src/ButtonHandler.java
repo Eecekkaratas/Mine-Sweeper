@@ -40,7 +40,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	ImageIcon img_happy = new ImageIcon("happy2.png");
 
 	public ButtonInfo msg;
-	// private KalanMineSayýsý kms;
+	// private Counter kms;
 	private Font font;
 	// private GUI gui;
 
@@ -57,7 +57,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		msg = new ButtonInfo();
-		// kms = new KalanMineSayýsý();
+		// kms = new Counter();
 		// gui = new GUI();
 
 		img_flag = new ImageIcon("flag.png");
@@ -153,14 +153,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 				} else {
 					if (e.getSource() instanceof ButtonClass) {
 						ButtonClass[][] buttons = msg.getButtonInfoY();
-						// buttons[row][col].setBackground(Color.red);
-
-						// button = (JButton) e.getSource();
-						/*
-						 * open(row, col); open(row-1,col-1); open(row+1,col+1); open(row-1,col+1);
-						 * open(row+1,col-1); open(row - 1, col); open(row + 1, col); open(row, col +
-						 * 1); open(row, col - 1);
-						 */
+						
 
 						if (grid.getCellContent(row, col) == 0) {
 							clear(row, col);
@@ -169,8 +162,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 						}
 
 						msg.setButtonInfoY(buttons);
-						// button.setEnabled(false);
-						// System.out.println(e.getButton());
+						
 					}
 				}
 				button.setLeftCick(true);
@@ -207,7 +199,27 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 	}
 
+	public void check(int success) {
+		if (success == NUM_MINES) {
+			JOptionPane.showMessageDialog(null, "   You are a genius  !!!");
+		} else {
+			// System.out.println("neden olmuyor?");
+		}
+
+	}
+
 	public void open(int i, int j) {
+		try {
+			// create the font to use. Specify the size!
+			font = Font.createFont(Font.TRUETYPE_FONT, new File("mine-sweeper.ttf")).deriveFont(12f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(font);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
 		msg = new ButtonInfo();
 		try {
@@ -242,6 +254,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 			// System.out.println("Hata: ArrayIndexOutOfBoundsException ");
 		}
 	}
+
 	public void clear(int i, int j) {
 		msg = new ButtonInfo();
 		ButtonClass[][] buttons = msg.getButtonInfoY();
@@ -389,6 +402,40 @@ public class ButtonHandler implements MouseListener, ActionListener {
 			}
 
 		}
+	}
+
+	@Override
+	public void mousePressed(MouseEvent e) {
+		GUI.setFace(img_shock);
+	}
+
+	@Override
+	public void mouseReleased(MouseEvent e) {
+		GUI.setFace(img_happy);
+
+	}
+
+	@Override
+	public void mouseEntered(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public void mouseExited(MouseEvent e) {
+		// TODO Auto-generated method stub
+
+	}
+
+	@Override
+	public String toString() {
+		return "ButtonHandler buttonInfo=" + Arrays.toString(buttonInfoX);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 
 }
