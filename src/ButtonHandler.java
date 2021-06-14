@@ -206,4 +206,41 @@ public class ButtonHandler implements MouseListener, ActionListener {
 		}
 
 	}
+
+	public void open(int i, int j) {
+		
+
+		msg = new ButtonInfo();
+		try {
+			if (grid.getCellContent(i, j) == -1) {
+				msg.getButtonInfoY()[i][j].setIcon(img_mine);
+				msg.getButtonInfoY()[i][j].setOpen(true);
+				// msg.getButtonInfoY()[i][j].setEnabled(false);
+			} else if (grid.getCellContent(i, j) == 0) {
+				msg.getButtonInfoY()[i][j].setIcon(img_empty);
+				msg.getButtonInfoY()[i][j].setBackground(new Color(160, 160, 160));
+
+				msg.getButtonInfoY()[i][j].setOpen(true);
+				msg.getButtonInfoY()[i][j].setEnabled(false);
+			} else {
+				msg.getButtonInfoY()[i][j].setFont(font);
+				msg.getButtonInfoY()[i][j].setText((String.valueOf(grid.getCellContent(i, j))));
+				if (grid.getCellContent(i, j) == 1) {
+					msg.getButtonInfoY()[i][j].setForeground(Color.blue);
+				} else if (grid.getCellContent(i, j) == 2) {
+					msg.getButtonInfoY()[i][j].setForeground(new Color(50, 185, 50));
+				} else if (grid.getCellContent(i, j) == 3) {
+					msg.getButtonInfoY()[i][j].setForeground(Color.red);
+				} else if (grid.getCellContent(i, j) == 4) {
+					msg.getButtonInfoY()[i][j].setForeground(new Color(148, 0, 211));
+				} else {
+					msg.getButtonInfoY()[i][j].setForeground(Color.yellow);
+				}
+				msg.getButtonInfoY()[i][j].setOpen(true);
+				// msg.getButtonInfoY()[i][j].setEnabled(false);
+			}
+		} catch (ArrayIndexOutOfBoundsException e) {
+			// System.out.println("Hata: ArrayIndexOutOfBoundsException ");
+		}
+	}
 }
