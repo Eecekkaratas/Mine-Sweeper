@@ -19,7 +19,12 @@ public class MineSweeperGUI extends JPanel {
 
 	public MineSweeperGUI(int numRows, int numCols, int numMines) {
 		
-		
+		Color gri = new Color(195,195,195);
+		msg = new ButtonInfo();
+		this.numRows = numRows;
+		this.numCols = numCols;
+		buttonInfoY = msg.getButtonInfoY();
+
 		grid = new MineGrid(numRows, numCols, numMines);
 
 		setLayout(new GridLayout(numRows, numCols));
@@ -29,16 +34,26 @@ public class MineSweeperGUI extends JPanel {
 			for (int j = 0; j < numCols; j++) {
 				ButtonClass button = new ButtonClass();
 				add(button);
-				
+				button.setBackground(Color.LIGHT_GRAY);
+				button.setMargin(new Insets(0, 0, 0, 0));
+				button.setEnabled(true);
 				ButtonHandler bth = new ButtonHandler(i, j, grid);
 				button.addMouseListener(bth);
 
-				
+				buttonInfoY[i][j] = button;
 
 				
 
 			}
 
 		}
-		
+		msg.setButtonInfoY(buttonInfoY);
 	}
+	public void clear() {
+        for (int i = 0; i < numRows; i++) {
+              for (int j = 0; j < numCols; j++) {
+          remove(buttonInfoY[i][j]);
+        }
+      }
+  }
+}
