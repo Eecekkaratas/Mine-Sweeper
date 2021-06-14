@@ -48,4 +48,16 @@ public class Game extends JPanel {
 		add(msg, BorderLayout.CENTER);
 
 	}
+
+	public void restart() {
+		removeAll();
+		add(new Game( NUM_MINES));
+		SwingUtilities.updateComponentTreeUI(this);
+	}
+
+	public void restart1(int num) {
+		removeAll();
+		add(new Game(num));
+		SwingUtilities.updateComponentTreeUI(this);
+	}
 }
