@@ -36,10 +36,33 @@ public class MenuBar extends JMenuBar  {
 	JMenuItem m3 = new JMenuItem("Difficult");
 	
 	JMenuItem m4 = new JMenuItem("How to play?");
-	
+	m4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent m) {
+				ImageIcon how = new ImageIcon("howtoplay.jpeg");
+		
+				JFrame jf = new JFrame("Nasýl Oynanýr ?");
+				
+				//jf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+				jf.add(new JLabel(how));
+				jf.setSize(1200, 600);
+				jf.setVisible(true);
+		 
+	}});
 	JMenuItem m5 = new JMenuItem("For More Information");
-	
-
+	m5.addActionListener(new ActionListener() {
+		public void actionPerformed(ActionEvent e) {
+			Runtime rt = Runtime.getRuntime();
+			String url = "http://www.minesweeper.info/";
+			try {
+				rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
+			} catch (IOException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+			//if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
+			//    Desktop.getDesktop().browse(new URI("http://www.minesweeper.info/"));
+			//}
+		}});
 		
 	 add(x);
 	 x.add(m1);
