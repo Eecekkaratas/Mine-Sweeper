@@ -26,7 +26,6 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 	private static final int NUM_MINES = 15;
 	private static final int size = 20;
 
-	
 	private Font sevendigitsfont;
 
 	ImageIcon img;
@@ -36,11 +35,21 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 	int seconds = 0;
 
 	JLabel label3 = new JLabel("", SwingConstants.LEFT); // süre
-	// JLabel label2 = new JLabel ("KALAN MAYIN SAYISI ");
 
 	public Time() {
 		super();
-		
+
+		try {
+
+			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("Seven Segment.ttf")).deriveFont(55f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+
+			ge.registerFont(sevendigitsfont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
 		Color mavi = new Color(0, 0, 60);
 		Color gri = new Color(200, 200, 200);
@@ -54,14 +63,10 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 		label3.setPreferredSize(new Dimension(50, 50));
 		label3.setForeground(Color.red);
 		label3.setFont(sevendigitsfont);
-		// label3.setBackground(Color.black);
 
 		add(label3, BorderLayout.CENTER);
 
-		
 	}
-
-	
 
 	boolean started = false;
 	String seconds_string = String.format("%02d", seconds);
@@ -73,9 +78,7 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 			seconds = (elapsedTime / 1000);
 			seconds_string = String.format("%03d", seconds);
 
-			// System.out.println(seconds_string);
 			label3.setText(getSeconds());
-			// timeLabel.setText(seconds_string);
 
 		}
 
@@ -91,7 +94,7 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 	}
 
 	public void restart() {
-		//timer.restart();
+		// timer.restart();
 		timer.stop();
 		this.seconds = 0;
 		timer.start();
