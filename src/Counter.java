@@ -14,10 +14,39 @@ public class Counter extends JPanel {
 	private static final int nom = 15;
 	private static int num_of_mines = 15;
 	private Font sevendigitsfont;
-	private static JLabel label = new JLabel("0" + String.valueOf(num_of_mines));
+	private static JLabel label = new JLabel("0"+String.valueOf(num_of_mines));
+	
 
-		public Counter() {
+	public static void increaseNum_of_mines() {
+		num_of_mines = num_of_mines + 1;
+		
+		label.setText("0"+String.valueOf(num_of_mines));
+		//System.out.println(str);
+	}
+
+	public static void decreaseNum_of_mines() {
+		num_of_mines = num_of_mines - 1;
+		
+		label.setText("0"+String.valueOf(num_of_mines) );
+		//System.out.println(str);
+	}
+	public static String getNum_of_mines() {
+        return String.valueOf(num_of_mines);
+    }
+	public Counter() {
 		super();
+
+		try {
+			// create the font to use. Specify the size!
+			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("Seven Segment.ttf")).deriveFont(55f);
+			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+			// register the font
+			ge.registerFont(sevendigitsfont);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (FontFormatException e) {
+			e.printStackTrace();
+		}
 
 		setLayout(new FlowLayout());
 		setBorder(BorderFactory.createLineBorder(Color.red));
@@ -27,9 +56,15 @@ public class Counter extends JPanel {
 		label.setFont(sevendigitsfont);
 		
 		label.setText("0"+String.valueOf(num_of_mines));
-		
+		//System.out.println(label.getText());
 
 		add(label);
 		
 	}
+	public static int restart() {
+		num_of_mines = nom;
+		//System.out.println("kalandan restart" + num_of_mines);
+		return num_of_mines;
+	}
+
 }
