@@ -1,20 +1,66 @@
+import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
+import java.awt.Label;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.TimerTask;
+import java.util.*;
 
+import javax.swing.BorderFactory;
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+import javax.swing.UIManager;
+import javax.swing.border.EmptyBorder;
+import javax.swing.plaf.ColorUIResource;
 
 public class MineSweeper {
-	
+
 	private static final int NUM_MINES = 15;
 	private static final int size = 20;
-	
+
 	public static void main(String[] args) {
 		
-		JFrame frame = new JFrame("Mine Sweeper | # of mines: " + NUM_MINES);
+		
+		Game ms = new Game(NUM_MINES);
+		
+		MenuBar menubar = new MenuBar();
+		ImageIcon img;
+
+		img = new ImageIcon("indir.jpg");
+		
+				
+		JFrame frame = new JFrame("Mayýn Tarlasý");
+		frame.setIconImage(img.getImage());
+		
+		frame.setJMenuBar(menubar);
+	
+		JPanel jp = new JPanel ();
+		jp.setLayout(new BorderLayout());
+		ms.setBorder(BorderFactory.createLoweredBevelBorder());
+		jp.add(ms,BorderLayout.CENTER);
+		jp.setBorder(new EmptyBorder(10,10,10,10));
+		jp.setBackground(Color.LIGHT_GRAY);
+		frame.add(jp,BorderLayout.CENTER);
+		
+		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
+		frame.setBackground(Color.LIGHT_GRAY);
 		frame.setSize(600, 650);
-		
+		//System.out.println(frame.getSize());
+		frame.setResizable(false);
 		frame.setVisible(true);
+
 	}
 
 }
