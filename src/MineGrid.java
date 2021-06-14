@@ -65,7 +65,7 @@ public class MineGrid {
 		try {
 		return mineInfo[i][j];
 		}catch(ArrayIndexOutOfBoundsException e){
-			//System.out.println("SA  MÝNEGRÝD HATA: ArrayIndexOutOfBoundsException");
+			//System.out.println("  MÝNEGRÝD HATA: ArrayIndexOutOfBoundsException");
 		}
 		return -2;
 	}

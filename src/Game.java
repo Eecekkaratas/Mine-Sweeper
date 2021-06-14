@@ -11,7 +11,7 @@ import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
 
 public class Game extends JPanel {
-	private static final int NUM_MINES = 15;
+	private static final int NUM_MINES = 50;
 	private static final int orta_size = 20;
 	private static final int kolay_size = 15;
 	private static final int zor_size = 15;
@@ -19,7 +19,7 @@ public class Game extends JPanel {
 	public Game(int num) {
 		// super();
 		setLayout(new BorderLayout());
-		// MenuBar menubar = new MenuBar();
+		
 		ImageIcon img;
 		ImageIcon img2;
 
@@ -28,7 +28,7 @@ public class Game extends JPanel {
 		img = new ImageIcon("indir.jpg");
 		img2 = new ImageIcon("happy2.png");
 
-		GUI gui = new GUI(this);// , new KalanMineSayýsý()
+		GUI gui = new GUI(this);
 		gui.setBackground(Color.LIGHT_GRAY);
 		MineSweeperGUI msg = new MineSweeperGUI(orta_size,orta_size,num);
 		msg.setBorder(BorderFactory.createLoweredBevelBorder());

@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public class ButtonHandler implements MouseListener, ActionListener {
-	private static final int NUM_MINES = 15;
+	private static final int NUM_MINES = 50;
 	private static final int size = 20;
 	private int row;
 	private int col;
@@ -48,7 +48,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 		row = x;
 		col = y;
 		grid = g;
-		// buttonInfoX = new ButtonClass [x][y];
+		
 	}
 
 	public void actionPerformed(MouseEvent e) {
@@ -57,8 +57,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		msg = new ButtonInfo();
-		// kms = new KalanMineSayýsý();
-		// gui = new GUI();
+		
 
 		img_flag = new ImageIcon("flag.png");
 		img_mine = new ImageIcon("mayin.png");
@@ -68,7 +67,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 		ButtonClass button = (ButtonClass) e.getSource();
 
-		// System.out.println(e.getButton());
+		
 
 		if (button.isLeftClicked() == false) {
 			if (e.getButton() == 1 && !button.isFlag()) { // sol týklanýrsa
@@ -96,8 +95,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 								open(i, k);
 								button.setBackground(Color.red);
 							}
-							// button.setEnabled(false);
-							// msg.getButtonInfoY()[i][k].setEnabled(false);
+							
 						}
 					}
 					for (int i = 0; i < size; i++) {
@@ -105,7 +103,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 						
 							
 							if (grid.getCellContent(i, k) == 1) {
-								//msg.getButtonInfoY()[i][k].setForeground(Color.BLUE);
+								
 								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
 								    protected Color getDisabledTextColor() {
 								        return Color.blue;
@@ -113,7 +111,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 								});
 								msg.getButtonInfoY()[i][k].setEnabled(false);
 							}if (grid.getCellContent(i, k) == 2) {
-								//msg.getButtonInfoY()[i][k].setForeground(Color.BLUE);
+								
 								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
 								    protected Color getDisabledTextColor() {
 								        return new Color(50, 185, 50);
@@ -121,7 +119,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 								});
 								msg.getButtonInfoY()[i][k].setEnabled(false);	
 							}if (grid.getCellContent(i, k) == 3) {
-								//msg.getButtonInfoY()[i][k].setForeground(Color.BLUE);
+							
 								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
 								    protected Color getDisabledTextColor() {
 								        return Color.red;
@@ -129,7 +127,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 								});
 								msg.getButtonInfoY()[i][k].setEnabled(false);	
 							}if (grid.getCellContent(i, k) == 4) {
-								//msg.getButtonInfoY()[i][k].setForeground(Color.BLUE);
+								
 								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
 								    protected Color getDisabledTextColor() {
 								        return new Color(148, 0, 211);
@@ -137,7 +135,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 								});
 								msg.getButtonInfoY()[i][k].setEnabled(false);	
 							}if (grid.getCellContent(i, k) == 5) {
-								//msg.getButtonInfoY()[i][k].setForeground(Color.BLUE);
+								
 								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
 								    protected Color getDisabledTextColor() {
 								        return Color.YELLOW;
@@ -145,7 +143,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 								});
 								msg.getButtonInfoY()[i][k].setEnabled(false);	
 							}						
-							// msg.getButtonInfoY()[i][k].setContentAreaFilled(true);
+							
 						}
 					}
 					
@@ -153,14 +151,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 				} else {
 					if (e.getSource() instanceof ButtonClass) {
 						ButtonClass[][] buttons = msg.getButtonInfoY();
-						// buttons[row][col].setBackground(Color.red);
-
-						// button = (JButton) e.getSource();
-						/*
-						 * open(row, col); open(row-1,col-1); open(row+1,col+1); open(row-1,col+1);
-						 * open(row+1,col-1); open(row - 1, col); open(row + 1, col); open(row, col +
-						 * 1); open(row, col - 1);
-						 */
+						
 
 						if (grid.getCellContent(row, col) == 0) {
 							clear(row, col);
@@ -169,8 +160,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 						}
 
 						msg.setButtonInfoY(buttons);
-						// button.setEnabled(false);
-						// System.out.println(e.getButton());
+						
 					}
 				}
 				button.setLeftCick(true);
@@ -211,17 +201,17 @@ public class ButtonHandler implements MouseListener, ActionListener {
 		if (success == NUM_MINES) {
 			JOptionPane.showMessageDialog(null, "   You are a genius  !!!");
 		} else {
-			// System.out.println("neden olmuyor?");
+			
 		}
 
 	}
 
 	public void open(int i, int j) {
 		try {
-			// create the font to use. Specify the size!
+			
 			font = Font.createFont(Font.TRUETYPE_FONT, new File("mine-sweeper.ttf")).deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			// register the font
+			
 			ge.registerFont(font);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -256,7 +246,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 					msg.getButtonInfoY()[i][j].setForeground(Color.yellow);
 				}
 				msg.getButtonInfoY()[i][j].setOpen(true);
-				// msg.getButtonInfoY()[i][j].setEnabled(false);
+				
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			// System.out.println("Hata: ArrayIndexOutOfBoundsException ");

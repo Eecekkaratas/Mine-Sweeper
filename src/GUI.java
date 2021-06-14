@@ -16,7 +16,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class GUI extends JPanel implements ActionListener {
-	private static final int NUM_MINES = 15;
+	private static final int NUM_MINES = 50;
 	private static final int size = 20;
 
 	private static JButton face;

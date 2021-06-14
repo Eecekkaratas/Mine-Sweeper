@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Counter extends JPanel {
-	private static final int nom = 15;
-	private static int num_of_mines = 15;
+	private static final int nom = 50;
+	private static int num_of_mines = 50;
 	private Font sevendigitsfont;
 	private static JLabel label = new JLabel("0"+String.valueOf(num_of_mines));
 	
@@ -37,10 +37,10 @@ public class Counter extends JPanel {
 		super();
 
 		try {
-			// create the font to use. Specify the size!
+			
 			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("Seven Segment.ttf")).deriveFont(55f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			// register the font
+		
 			ge.registerFont(sevendigitsfont);
 		} catch (IOException e) {
 			e.printStackTrace();

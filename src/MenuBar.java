@@ -56,12 +56,10 @@ public class MenuBar extends JMenuBar  {
 			try {
 				rt.exec("rundll32 url.dll,FileProtocolHandler " + url);
 			} catch (IOException e1) {
-				// TODO Auto-generated catch block
+				
 				e1.printStackTrace();
 			}
-			//if (Desktop.isDesktopSupported() && Desktop.getDesktop().isSupported(Desktop.Action.BROWSE)) {
-			//    Desktop.getDesktop().browse(new URI("http://www.minesweeper.info/"));
-			//}
+			
 		}});
 		
 	 add(x);

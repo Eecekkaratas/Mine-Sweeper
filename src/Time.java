@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 public class Time extends JPanel implements ActionListener, MouseListener {
-	private static final int NUM_MINES = 15;
+	private static final int NUM_MINES = 50;
 	private static final int size = 20;
 
 	private Font sevendigitsfont;

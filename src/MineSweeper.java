@@ -26,7 +26,7 @@ import javax.swing.plaf.ColorUIResource;
 
 public class MineSweeper {
 
-	private static final int NUM_MINES = 15;
+	private static final int NUM_MINES = 50;
 	private static final int size = 20;
 
 	public static void main(String[] args) {
