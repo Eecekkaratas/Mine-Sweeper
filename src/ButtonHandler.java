@@ -208,7 +208,6 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	}
 
 	public void open(int i, int j) {
-		
 
 		msg = new ButtonInfo();
 		try {
@@ -243,4 +242,153 @@ public class ButtonHandler implements MouseListener, ActionListener {
 			// System.out.println("Hata: ArrayIndexOutOfBoundsException ");
 		}
 	}
+	public void clear(int i, int j) {
+		msg = new ButtonInfo();
+		ButtonClass[][] buttons = msg.getButtonInfoY();
+
+		if (i < size && j < size && i >= 0 && j >= 0 && !buttons[i][j].isOpen()) { // isInsideGrid methodu var
+			open(i, j);
+			if (grid.getCellContent(i - 1, j - 1) == 0) { // sol üst köþe
+				clear(i - 1, j - 1);
+				if (grid.getCellContent(i - 2, j - 2) != 0 && grid.getCellContent(i - 2, j - 2) != -1) {
+					open(i - 2, j - 2);
+				}
+			}
+			if (grid.getCellContent(i - 1, j) == 0) { // üst
+				clear(i - 1, j);
+				open(i - 2, j - 1);
+				open(i - 2, j);
+				open(i - 2, j + 1);
+			}
+			if (grid.getCellContent(i - 1, j + 1) == 0) { // sað üst köþe
+				clear(i - 1, j + 1);
+				if (grid.getCellContent(i - 2, j + 2) != 0 && grid.getCellContent(i - 2, j + 2) != -1) {
+					open(i - 2, j + 2);
+				}
+			}
+			if (grid.getCellContent(i, j - 1) == 0) { // sol yan
+				clear(i, j - 1);
+				if (grid.getCellContent(i - 1, j - 2) != 0 && grid.getCellContent(i - 1, j - 2) != -1) {
+					open(i - 1, j - 2);
+				}
+				if (grid.getCellContent(i, j - 2) != 0 && grid.getCellContent(i, j - 2) != -1) {
+					open(i, j - 2);
+				}
+				if (grid.getCellContent(i + 1, j - 2) != 0 && grid.getCellContent(i + 1, j - 2) != -1) {
+					open(i + 1, j - 2);
+				}
+			}
+			if (grid.getCellContent(i, j + 1) == 0) { // sað yan
+				clear(i, j + 1);
+				if (grid.getCellContent(i - 1, j + 2) != 0 && grid.getCellContent(i - 1, j + 2) != -1) {
+					open(i - 1, j + 2);
+				}
+				if (grid.getCellContent(i, j + 2) != 0 && grid.getCellContent(i, j + 2) != -1) {
+					open(i, j + 2);
+				}
+				if (grid.getCellContent(i + 1, j + 2) != 0 && grid.getCellContent(i + 1, j + 2) != -1) {
+					open(i + 1, j + 2);
+				}
+
+			}
+			if (grid.getCellContent(i + 1, j - 1) == 0) { // sol alt köþe
+				clear(i + 1, j - 1);
+				if (grid.getCellContent(i + 2, j - 2) != 0 && grid.getCellContent(i + 2, j - 2) != -1) {
+					open(i + 2, j - 2);
+				}
+			}
+			if (grid.getCellContent(i + 1, j) == 0) { // alt
+				clear(i + 1, j);
+				if (grid.getCellContent(i + 2, j - 1) != 0 && grid.getCellContent(i + 2, j - 1) != -1) {
+					open(i + 2, j - 1);
+				}
+				if (grid.getCellContent(i + 2, j) != 0 && grid.getCellContent(i + 2, j) != -1) {
+					open(i + 2, j);
+				}
+				if (grid.getCellContent(i + 2, j + 1) != 0 && grid.getCellContent(i + 2, j + 1) != -1) {
+					open(i + 2, j + 1);
+				}
+			}
+			if (grid.getCellContent(i + 1, j + 1) == 0) { // sað alt köþe
+				clear(i + 1, j + 1);
+				if (grid.getCellContent(i + 2, j + 2) != 0 && grid.getCellContent(i + 2, j + 2) != -1) {
+					open(i + 2, j + 2);
+				}
+			}
+			if ((grid.getCellContent(i + 1, j + 1) != 0) && (grid.getCellContent(i, j - 1) != 0)
+					&& (grid.getCellContent(i + 1, j) != 0) && (grid.getCellContent(i + 1, j - 1) != 0)
+					&& (grid.getCellContent(i, j + 1) != 0) && (grid.getCellContent(i - 1, j + 1) != 0)
+					&& (grid.getCellContent(i - 1, j) != 0) && (grid.getCellContent(i - 1, j - 1) != 0)
+					&& (grid.getCellContent(i, j) == 0)) {
+				open(i + 1, j + 1);
+				open(i + 1, j);
+				open(i + 1, j - 1);
+
+				open(i - 1, j - 1);
+				open(i - 1, j);
+				open(i - 1, j + 1);
+
+				open(i, j + 1);
+				// open(i, j);
+				open(i, j - 1);
+			}
+			if ((grid.getCellContent(i, j - 1) != 0) && (grid.getCellContent(i, j + 1) != 0)
+					&& (grid.getCellContent(i - 1, j + 1) != 0) && (grid.getCellContent(i - 1, j) != 0)
+					&& (grid.getCellContent(i - 1, j - 1) != 0) && (grid.getCellContent(i, j) == 0)) {
+
+				open(i - 1, j - 1);
+				open(i - 1, j);
+				open(i - 1, j + 1);
+
+				open(i, j + 1);
+
+				open(i, j - 1);
+			}
+			if ((grid.getCellContent(i + 1, j + 1) != 0) && (grid.getCellContent(i, j - 1) != 0)
+					&& (grid.getCellContent(i + 1, j) != 0) && (grid.getCellContent(i + 1, j - 1) != 0)
+					&& (grid.getCellContent(i, j + 1) != 0) && (grid.getCellContent(i, j) == 0)) {
+				open(i + 1, j + 1);
+				open(i + 1, j);
+				open(i + 1, j - 1);
+
+				open(i, j + 1);
+
+				open(i, j - 1);
+			}
+			if ((grid.getCellContent(i + 1, j + 1) != 0) && (grid.getCellContent(i + 1, j) != 0)
+					&& (grid.getCellContent(i, j + 1) == 0) && (grid.getCellContent(i - 1, j + 1) != 0)
+					&& (grid.getCellContent(i - 1, j) != 0) && (grid.getCellContent(i, j) == 0)) {
+
+				open(i + 1, j + 1);
+				open(i + 1, j);
+
+				open(i - 1, j);
+				open(i - 1, j + 1);
+
+			}
+			if ((grid.getCellContent(i, j - 1) == 0) && (grid.getCellContent(i + 1, j) != 0)
+					&& (grid.getCellContent(i + 1, j - 1) != 0) && (grid.getCellContent(i - 1, j) != 0)
+					&& (grid.getCellContent(i - 1, j - 1) != 0) && (grid.getCellContent(i, j) == 0)) {
+
+				open(i + 1, j - 1);
+				open(i + 1, j);
+
+				open(i - 1, j);
+				open(i - 1, j - 1);
+
+			}
+			if ((grid.getCellContent(i + 1, j + 1) != 0) && (grid.getCellContent(i, j - 1) != 0)
+					&& (grid.getCellContent(i + 1, j) == 0) && (grid.getCellContent(i + 1, j - 1) != 0)
+					&& (grid.getCellContent(i, j + 1) != 0) && (grid.getCellContent(i - 1, j + 1) != 0)
+					&& (grid.getCellContent(i - 1, j) == 0) && (grid.getCellContent(i - 1, j - 1) != 0)
+					&& (grid.getCellContent(i, j) == 0)) {
+
+				open(i, j + 1);
+				// open(i, j);
+				open(i, j - 1);
+			}
+
+		}
+	}
+
 }
