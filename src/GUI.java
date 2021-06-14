@@ -27,16 +27,16 @@ public class GUI extends JPanel implements ActionListener {
 	}
 
 	static Time time = new Time();
-	Counter kms = new Counter(); //Kalan Mayýn Sayýsý
+	Counter kms = new Counter(); // KALAN MAYIN SAYISI 
 	MineSweeper ms;
 	
 
 	ImageIcon img;
 	ImageIcon img_happy;
 
-	public GUI(Game game) { // , KalanMayýnSayýsý kms
-		// super();
-		// kms = kms;
+	
+
+	public GUI(MineSweeper game) { 
 		JPanel jp = new JPanel();
 		ms = game;
 		time.start();
@@ -77,5 +77,22 @@ public class GUI extends JPanel implements ActionListener {
 		jp.add(time);
 
 		add(jp);
+
+		face.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent m) {
+				time = new Time();
+				// time.restart();
+				kms.restart();
+				ms.restart();
+
+			}
+		});
+
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+
 	}
 }
