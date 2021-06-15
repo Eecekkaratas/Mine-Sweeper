@@ -1,35 +1,23 @@
-import java.awt.Color;
-import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseEvent;
+import components.ButtonClass;
+import components.ButtonInfo;
+import components.Counter;
 
-import javax.swing.BorderFactory;
-import javax.swing.ImageIcon;
-import javax.swing.JButton;
-import javax.swing.JOptionPane;
-import javax.swing.Timer;
+import javax.swing.*;
 import javax.swing.plaf.metal.MetalButtonUI;
-
+import java.awt.*;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import java.io.File;
-import java.io.IOException;
 import java.util.Arrays;
-import java.util.ArrayList;
 
-public class ButtonHandler implements MouseListener, ActionListener {
+public class ButtonHandler implements MouseListener {
 	private static final int NUM_MINES = 40;
 	private static final int size = 16;
-	private int row;
-	private int col;
-	private MineGrid grid;
+	private final int row;
+	private final int col;
+	private final MineGrid grid;
 	private static int success = 0;
 
 	public ButtonClass[][] buttonInfoX;
-	public ButtonClass[][] buttonInfoY;
 
 	ImageIcon img_flag;
 	ImageIcon img_mine;
@@ -39,10 +27,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	ImageIcon img_shock = new ImageIcon("surpriz.jpg");
 	ImageIcon img_happy = new ImageIcon("happy.jpg");
 
-	public ButtonInfo msg;
-	// private KalanMineSayýsý kms;
-	private Font font;
-	// private GUI gui;
+	public ButtonInfo msg = new ButtonInfo();
 
 	public ButtonHandler(int x, int y, MineGrid g) {
 		row = x;
@@ -51,13 +36,10 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 	}
 
-	public void actionPerformed(MouseEvent e) {
-	}
 
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	@Override
 	public void mouseClicked(MouseEvent e) {
-		msg = new ButtonInfo();
-
 		img_flag = new ImageIcon("flag.png");
 		img_mine = new ImageIcon("mayin.png");
 		img_empty = new ImageIcon("empty.png");
@@ -66,13 +48,13 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 		ButtonClass button = (ButtonClass) e.getSource();
 
-		if (button.isOpen() == false) {
-			if (e.getButton() == 1 && !button.isFlag()) { // sol týklanýrsa
+		if (button.isOpen()) {
+			if (e.getButton() == 1 && !button.isFlag()) {
 
 				if (grid.isMine(row, col)) {
 					button.setIcon(img_mine);
-					GUI.setFace(img_sad);
-					GUI.time.stop();
+					TopPanel.setFace(img_sad);
+					TopPanel.time.stop();
 					JOptionPane.showMessageDialog(null, "   GAME OVER  !!!");
 
 					for (int i = 0; i < size; i++) {
@@ -114,18 +96,17 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 					}
 				}
-				button.setLeftCick(true);
+				button.setLeftCick();
 
 			} else if (e.getButton() == 3)
 
-			{ // sað týklanýrsa
+			{
 
 				if (!button.isFlag()) {
 					button.setIcon(img_flag);
 
 					button.setFlag(true);
-					// kms.decreaseNum_of_mines();
-					// kms.decreaseNum_of_mines();
+
 					Counter.decreaseNum_of_mines();
 					if (grid.isMine(row, col)) {
 						success = success + 1;
@@ -136,7 +117,6 @@ public class ButtonHandler implements MouseListener, ActionListener {
 				} else {
 					button.setIcon(null);
 					button.setFlag(false);
-					// kms.increaseNum_of_mines();
 					Counter.increaseNum_of_mines();
 					if (grid.isMine(row, col)) {
 						success = success - 1;
@@ -145,7 +125,8 @@ public class ButtonHandler implements MouseListener, ActionListener {
 					}
 				}
 
-			} else if (e.getButton() == 2) { // orta click -- debugging
+			} else {
+				e.getButton();
 			}
 		}
 
@@ -154,24 +135,15 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	public void check(int success) {
 		if (success == NUM_MINES) {
 			JOptionPane.showMessageDialog(null, "   You are a genius  !!!");
-		} else {
-
 		}
 
 	}
 
 	public void open(int i, int j) {
-		try {
 
-			font = Font.createFont(Font.TRUETYPE_FONT, new File("mine-sweeper.ttf")).deriveFont(12f);
-			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
+		GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
-			ge.registerFont(font);
-		} catch (IOException e) {
-			e.printStackTrace();
-		} catch (FontFormatException e) {
-			e.printStackTrace();
-		}
+		ge.registerFont(new Font(Font.SERIF,Font.BOLD,18));
 
 		msg = new ButtonInfo();
 		try {
@@ -179,7 +151,6 @@ public class ButtonHandler implements MouseListener, ActionListener {
 			if (grid.getCellContent(i, j) == -1) {
 				msg.getButtonInfoY()[i][j].setIcon(img_mine);
 				msg.getButtonInfoY()[i][j].setOpen(true);
-				// msg.getButtonInfoY()[i][j].setEnabled(false);
 			} else if (grid.getCellContent(i, j) == 0) {
 				msg.getButtonInfoY()[i][j].setIcon(img_empty);
 				msg.getButtonInfoY()[i][j].setBackground(new Color(160, 160, 160));
@@ -187,7 +158,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 				msg.getButtonInfoY()[i][j].setOpen(true);
 				msg.getButtonInfoY()[i][j].setEnabled(false);
 			} else {
-				msg.getButtonInfoY()[i][j].setFont(font);
+				msg.getButtonInfoY()[i][j].setFont(new Font(Font.SERIF,Font.BOLD,18));
 				msg.getButtonInfoY()[i][j].setText((String.valueOf(grid.getCellContent(i, j))));
 				if (grid.getCellContent(i, j) == 1) {
 					msg.getButtonInfoY()[i][j].setForeground(Color.blue);
@@ -244,8 +215,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 				msg.getButtonInfoY()[i][j].setOpen(true);
 
 			}
-		} catch (ArrayIndexOutOfBoundsException e) {
-			// System.out.println("Hata: ArrayIndexOutOfBoundsException ");
+		} catch (ArrayIndexOutOfBoundsException ignored) {
 		}
 	}
 
@@ -253,7 +223,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 		msg = new ButtonInfo();
 		ButtonClass[][] buttons = msg.getButtonInfoY();
 
-		if (i < size && j < size && i >= 0 && j >= 0 && !buttons[i][j].isOpen()) { // isInsideGrid methodu var
+		if (i < size && j < size && i >= 0 && j >= 0 && buttons[i][j].isOpen()) { // isInsideGrid methodu var
 			open(i, j);
 			if (grid.getCellContent(i - 1, j - 1) == 0) { // sol üst köþe
 				clear(i - 1, j - 1);
@@ -400,12 +370,12 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 	@Override
 	public void mousePressed(MouseEvent e) {
-		GUI.setFace(img_shock);
+		TopPanel.setFace(img_shock);
 	}
 
 	@Override
 	public void mouseReleased(MouseEvent e) {
-		GUI.setFace(img_happy);
+		TopPanel.setFace(img_happy);
 
 	}
 
@@ -425,10 +395,6 @@ public class ButtonHandler implements MouseListener, ActionListener {
 		return "ButtonHandler buttonInfo=" + Arrays.toString(buttonInfoX);
 	}
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
 
-	}
 
 }

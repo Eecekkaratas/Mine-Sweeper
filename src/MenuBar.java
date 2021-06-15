@@ -23,87 +23,24 @@ public class MenuBar extends JMenuBar  {
 	private static final int size = 16;
 	static MineSweeperGUI msg;
 	Game game;
-	public MenuBar() {
+	public MenuBar(Game game,JFrame frame) {
 		super();
 		
 	JMenuBar mb = new JMenuBar();
 	JMenu x = new JMenu("Game");
 	JMenu h = new JMenu("Help");
-	JMenuItem m1 = new JMenuItem("Easy");
-	m1.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent m) {
-			int easy_size = 5;
-			int easy_mine = 20;
-			Game game = new Game(easy_mine);
-			
-			MenuBar menubar = new MenuBar();
-			ImageIcon img;
+	JMenuItem easyMode = new JMenuItem("Easy");
+    easyMode.addActionListener(click ->updateFrameWindow(frame,game,20,"Mine Sweeper | # of mines: " + 20+""));
 
-			img = new ImageIcon(".\\components\\indir.jpg");
-			
-			
-			JFrame frame = new JFrame("Mine Sweeper | # of mines: " + easy_mine);
-			frame.setIconImage(img.getImage());
-			
-			frame.setJMenuBar(menubar);
-		
-			frame.add(game);
-			
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setBackground(Color.LIGHT_GRAY);
-			frame.setSize(550, 600);
-			
-			//frame.setResizable(false);
-			frame.setVisible(true);
-			
-			
-		}});
-
-		
-	JMenuItem m2 = new JMenuItem("Intermediate");
-	
-	JMenuItem m3 = new JMenuItem("Difficult");
-	m3.addActionListener(new ActionListener() {
-		public void actionPerformed(ActionEvent m) {
-			int hard_size = 22;
-			int hard_mine = 100;
-			
-			Game game = new Game(hard_mine);
-			
-			MenuBar menubar = new MenuBar();
-			ImageIcon img;
-
-			img = new ImageIcon(".\\src\\components\\indir.jpg");
-			
-					
-			JFrame frame = new JFrame("Mine Sweeper | # of mines: " + hard_mine + "  Difficult mode");
-			frame.setIconImage(img.getImage());
-			
-			frame.setJMenuBar(menubar);
-		
-			JPanel jp = new JPanel ();
-			jp.setLayout(new BorderLayout());
-			game.setBorder(BorderFactory.createLoweredBevelBorder());
-			jp.add(game,BorderLayout.CENTER);
-			jp.setBorder(new EmptyBorder(10,10,10,10));
-			jp.setBackground(Color.LIGHT_GRAY);
-			frame.add(jp,BorderLayout.CENTER);
-			
-			
-			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-			frame.setBackground(Color.LIGHT_GRAY);
-			frame.setSize(550, 600);
-			//System.out.println(frame.getSize());
-			frame.setResizable(false);
-			frame.setVisible(true);
-			
-			
-		}});
-	
+    JMenuItem intermediateMode = new JMenuItem("Intermediate");
+        
+    JMenuItem difficultMode = new JMenuItem("Difficult");
+    difficultMode.addActionListener(click ->updateFrameWindow(frame,game,100,"Mine Sweeper | # of mines: " + 100+""));
+    	
 	JMenuItem m4 = new JMenuItem("How to play?");
 	m4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent m) {
-				ImageIcon how = new ImageIcon(".\\src\\components\\howtoplay.jpeg");
+				ImageIcon how = new ImageIcon("howtoplay.jpeg");
 		
 				JFrame jf = new JFrame("Nasýl Oynanýr ?");
 				
@@ -128,13 +65,21 @@ public class MenuBar extends JMenuBar  {
 		}});
 		
 	 add(x);
-	 x.add(m1);
-	 x.add(m2);
-	 x.add(m3);
+	 x.add(easyMode);
+	 x.add(intermediateMode);
+	 x.add(difficultMode);
 	 add(h);
 	 h.add(m4);
 	 h.add(m5);
 	 
 
 }
+	private void updateFrameWindow(JFrame frame,JPanel panel,int num,String title){
+		frame.remove(panel);
+		frame.setTitle(title);
+		frame.add(new Game(num));
+		frame.revalidate();
+		frame.repaint();
+
+	}
 }

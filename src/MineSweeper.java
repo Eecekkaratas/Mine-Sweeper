@@ -31,16 +31,16 @@ public class MineSweeper {
 
 	public static void main(String[] args) {
 		
-		
+		JFrame frame = new JFrame("Mine Sweeper | # of mines: " + NUM_MINES);
 		Game ms = new Game(NUM_MINES);
 		
-		MenuBar menubar = new MenuBar();
+		MenuBar menubar = new MenuBar(ms,frame);
 		ImageIcon img;
 
-		img = new ImageIcon(".\\components\\indir.jpg");
+		img = new ImageIcon("indir.jpg");
 		
 				
-		JFrame frame = new JFrame("Mine Sweeper | # of mines: " + NUM_MINES);
+		
 		frame.setIconImage(img.getImage());
 		
 		frame.setJMenuBar(menubar);

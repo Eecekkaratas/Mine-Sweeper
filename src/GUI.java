@@ -28,7 +28,7 @@ public class GUI extends JPanel implements ActionListener {
 
 	static Time time = new Time();
 	Counter kms = new Counter(); // KALAN MAYIN SAYISI 
-	Game ms;
+	//Game ms;
 	
 
 	ImageIcon img;
@@ -38,14 +38,14 @@ public class GUI extends JPanel implements ActionListener {
 
 	public GUI(Game game) { 
 		JPanel jp = new JPanel();
-		ms = game;
+		//ms = game;
 		time.start();
 
 		Color mavi = new Color(0, 0, 60);
 		Color gri = new Color(238, 238, 238);
 		
-		img = new ImageIcon(".\\components\\indir.jpg");
-		img_happy = new ImageIcon(".\\components\\happy.jpg");
+		img = new ImageIcon("indir.jpg");
+		img_happy = new ImageIcon("happy.jpg");
 
 		Border raisedbevel = BorderFactory.createRaisedBevelBorder();
 		Border loweredbevel = BorderFactory.createLoweredBevelBorder();
