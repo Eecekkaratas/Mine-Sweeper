@@ -33,34 +33,27 @@ public class MenuBar extends JMenuBar  {
 	m1.addActionListener(new ActionListener() {
 		public void actionPerformed(ActionEvent m) {
 			int easy_size = 5;
-			int easy_mine = 5;
+			int easy_mine = 20;
 			Game game = new Game(easy_mine);
 			
 			MenuBar menubar = new MenuBar();
 			ImageIcon img;
 
-			img = new ImageIcon("indir.jpg");
+			img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
 			
-					
-			JFrame frame = new JFrame("Mine Sweeper | # of mines: " + easy_mine + "  Easy mode");
+			
+			JFrame frame = new JFrame("Mine Sweeper | # of mines: " + easy_mine);
 			frame.setIconImage(img.getImage());
 			
 			frame.setJMenuBar(menubar);
 		
-			JPanel jp = new JPanel ();
-			jp.setLayout(new BorderLayout());
-			game.setBorder(BorderFactory.createLoweredBevelBorder());
-			jp.add(game,BorderLayout.CENTER);
-			jp.setBorder(new EmptyBorder(10,10,10,10));
-			jp.setBackground(Color.LIGHT_GRAY);
-			frame.add(jp,BorderLayout.CENTER);
-			
+			frame.add(game);
 			
 			frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 			frame.setBackground(Color.LIGHT_GRAY);
 			frame.setSize(550, 600);
-			//System.out.println(frame.getSize());
-			frame.setResizable(false);
+			
+			//frame.setResizable(false);
 			frame.setVisible(true);
 			
 			
@@ -80,7 +73,7 @@ public class MenuBar extends JMenuBar  {
 			MenuBar menubar = new MenuBar();
 			ImageIcon img;
 
-			img = new ImageIcon("indir.jpg");
+			img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
 			
 					
 			JFrame frame = new JFrame("Mine Sweeper | # of mines: " + hard_mine + "  Difficult mode");
@@ -110,7 +103,7 @@ public class MenuBar extends JMenuBar  {
 	JMenuItem m4 = new JMenuItem("How to play?");
 	m4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent m) {
-				ImageIcon how = new ImageIcon("howtoplay.jpeg");
+				ImageIcon how = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\howtoplay.jpeg");
 		
 				JFrame jf = new JFrame("Nasýl Oynanýr ?");
 				

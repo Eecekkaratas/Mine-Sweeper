@@ -26,7 +26,7 @@ import javax.swing.plaf.ColorUIResource;
 
 public class MineSweeper {
 
-	private static final int NUM_MINES = 50;
+	private static final int NUM_MINES = 40;
 	private static final int size = 16;
 
 	public static void main(String[] args) {
@@ -37,28 +37,21 @@ public class MineSweeper {
 		MenuBar menubar = new MenuBar();
 		ImageIcon img;
 
-		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\indir.jpg");
+		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
 		
 				
-		JFrame frame = new JFrame("\"Mine Sweeper | # of mines: " + NUM_MINES);
+		JFrame frame = new JFrame("Mine Sweeper | # of mines: " + NUM_MINES);
 		frame.setIconImage(img.getImage());
 		
 		frame.setJMenuBar(menubar);
 	
-		JPanel jp = new JPanel ();
-		jp.setLayout(new BorderLayout());
-		ms.setBorder(BorderFactory.createLoweredBevelBorder());
-		jp.add(ms,BorderLayout.CENTER);
-		jp.setBorder(new EmptyBorder(10,10,10,10));
-		jp.setBackground(Color.LIGHT_GRAY);
-		frame.add(jp,BorderLayout.CENTER);
-		
+		frame.add(ms);
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBackground(Color.LIGHT_GRAY);
 		frame.setSize(550, 600);
-		//System.out.println(frame.getSize());
-		frame.setResizable(false);
+		
+		//frame.setResizable(false);
 		frame.setVisible(true);
 
 	}

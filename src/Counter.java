@@ -11,8 +11,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class Counter extends JPanel {
-	private static final int nom = 50;
-	private static int num_of_mines = 50;
+	private static final int nom = 40;
+	private static int num_of_mines = 40;
 	private Font sevendigitsfont;
 	private static JLabel label = new JLabel("0"+String.valueOf(num_of_mines));
 	
@@ -38,7 +38,7 @@ public class Counter extends JPanel {
 
 		try {
 			
-			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\Seven Segment.ttf")).deriveFont(55f);
+			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\Seven Segment.ttf")).deriveFont(55f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		
 			ge.registerFont(sevendigitsfont);

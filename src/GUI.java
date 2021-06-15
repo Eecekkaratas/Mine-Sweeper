@@ -16,7 +16,7 @@ import javax.swing.*;
 import javax.swing.border.Border;
 
 public class GUI extends JPanel implements ActionListener {
-	private static final int NUM_MINES = 50;
+	private static final int NUM_MINES = 40;
 	private static final int size = 16;
 
 	private static JButton face;
@@ -43,30 +43,33 @@ public class GUI extends JPanel implements ActionListener {
 
 		Color mavi = new Color(0, 0, 60);
 		Color gri = new Color(238, 238, 238);
-		Color açýkgri = new Color(185, 185, 185);
-		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\indir.jpg");
-		img_happy = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\happy2.png");
+		
+		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
+		img_happy = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\happy.jpg");
 
 		Border raisedbevel = BorderFactory.createRaisedBevelBorder();
 		Border loweredbevel = BorderFactory.createLoweredBevelBorder();
 
 		jp.setLayout(new BorderLayout());
 		setLayout(new BorderLayout());
+		jp.setBorder(loweredbevel);
 		setBorder(loweredbevel);
-		jp.setBorder(raisedbevel);
 		jp.setLayout(new GridLayout(1, 3));
-		jp.setBorder(BorderFactory.createLineBorder(Color.gray));
+		//jp.setBorder(BorderFactory.createLineBorder(Color.gray));
 
 		jp.setBackground(Color.LIGHT_GRAY);
 
+		JPanel jp2 = new JPanel();
+		jp2.setBackground(Color.LIGHT_GRAY);
 		face = new JButton(img_happy);
-		face.setBackground(açýkgri);
+		face.setBackground( new Color(185, 185, 185));
 		face.setBorder(BorderFactory.createRaisedBevelBorder());
+		jp2.add(face);
 		jp.add(kms, BorderLayout.WEST);
 
 		jp.add(new JLabel("       "));
 
-		jp.add(face);
+		jp.add(jp2);
 		add(new JLabel("       "), BorderLayout.NORTH);
 		add(new JLabel("       "), BorderLayout.SOUTH);
 
@@ -80,10 +83,12 @@ public class GUI extends JPanel implements ActionListener {
 
 		face.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent m) {
+				//removeAll();
 				time = new Time();
 				// time.restart();
 				kms.restart();
-				ms.restart();
+				game.restart();
+					
 
 			}
 		});

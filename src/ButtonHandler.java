@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.ArrayList;
 
 public class ButtonHandler implements MouseListener, ActionListener {
-	private static final int NUM_MINES = 50;
+	private static final int NUM_MINES = 40;
 	private static final int size = 16;
 	private int row;
 	private int col;
@@ -35,9 +35,9 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	ImageIcon img_mine;
 	ImageIcon img_empty;
 	ImageIcon img_sad;
-	ImageIcon img_xmayýn;
-	ImageIcon img_shock = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\surpriz.jpg");
-	ImageIcon img_happy = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\happy2.png");
+	ImageIcon img_xmayin;
+	ImageIcon img_shock = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\surpriz.jpg");
+	ImageIcon img_happy = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\happy.jpg");
 
 	public ButtonInfo msg;
 	// private KalanMineSayýsý kms;
@@ -58,11 +58,11 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	public void mouseClicked(MouseEvent e) {
 		msg = new ButtonInfo();
 
-		img_flag = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\flag.png");
-		img_mine = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\mayin.png");
-		img_empty = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\empty.png");
-		img_xmayýn = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\xmayin.png");
-		img_sad = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\sad.png");
+		img_flag = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\flag.png");
+		img_mine = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\mayin.png");
+		img_empty = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\empty.png");
+		img_xmayin = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\xmayin.png");
+		img_sad = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\sad.jpg");
 
 		ButtonClass button = (ButtonClass) e.getSource();
 
@@ -90,7 +90,10 @@ public class ButtonHandler implements MouseListener, ActionListener {
 						for (int k = 0; k < size; k++) {
 
 							if (grid.getCellContent(i, k) != -1 && msg.getButtonInfoY()[i][k].isFlag()) {
-								msg.getButtonInfoY()[i][k].setIcon(img_xmayýn);
+								msg.getButtonInfoY()[i][k].setIcon(img_xmayin);
+							}
+							if (grid.getCellContent(i, k) == -1 && msg.getButtonInfoY()[i][k].isFlag()) {
+								msg.getButtonInfoY()[i][k].setIcon(img_flag);
 							}
 
 						}

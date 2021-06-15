@@ -39,6 +39,7 @@ public class MineSweeperGUI extends JPanel {
 				button.setEnabled(true);
 				ButtonHandler bth = new ButtonHandler(i, j, grid);
 				button.addMouseListener(bth);
+				button.setBorder(BorderFactory.createRaisedBevelBorder());
 
 				buttonInfoY[i][j] = button;
 

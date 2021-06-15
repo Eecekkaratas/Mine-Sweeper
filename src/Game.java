@@ -1,5 +1,6 @@
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.GridLayout;
 import java.awt.Label;
 
@@ -9,17 +10,19 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.border.Border;
+import javax.swing.border.EmptyBorder;
+
+
 
 public class Game extends JPanel {
-	private static final int NUM_MINES = 50;
+	private static final int NUM_MINES = 40;
 	private static final int orta_size = 16;
-	private static final int kolay_size = 15;
-	private static final int zor_size = 15;
+	
 
 	public Game(int num) {
 		// super();
 		setLayout(new BorderLayout());
-		
+		//setSize(new Dimension(530, 178));
 		ImageIcon img;
 		ImageIcon img2;
 
@@ -32,25 +35,33 @@ public class Game extends JPanel {
 		gui.setBackground(Color.LIGHT_GRAY);
 		MineSweeperGUI msg = new MineSweeperGUI(orta_size,orta_size,num);
 		msg.setBorder(BorderFactory.createLoweredBevelBorder());
-
-		add(gui, BorderLayout.NORTH);
-
+		
+		JPanel jp = new JPanel();
+		
+		jp.setLayout(new BorderLayout());
+		jp.add(gui, BorderLayout.NORTH);
+		jp.setBorder(BorderFactory.createRaisedBevelBorder());
 		msg.setLayout(new GridLayout(orta_size, orta_size));
 
-		JPanel top = new JPanel();
-		top.setBackground(Color.LIGHT_GRAY);
+		
 		JPanel bottom = new JPanel();
-		top.setLayout(new BorderLayout());
+		
 		bottom.setLayout(new BorderLayout());
 		bottom.setBackground(Color.LIGHT_GRAY);
-		setBorder(BorderFactory.createLineBorder(Color.gray));
-
-		add(msg, BorderLayout.CENTER);
-
+		bottom.setBorder(new EmptyBorder(12,5,8,8));
+		bottom.add(msg, BorderLayout.CENTER);
+		setBorder(BorderFactory.createLineBorder(Color.LIGHT_GRAY));
+		
+		jp.add(bottom,BorderLayout.CENTER);
+		
+		jp.setBackground(Color.LIGHT_GRAY);
+		
+		setBorder(BorderFactory.createRaisedBevelBorder());
+		add(jp,BorderLayout.CENTER);
 	}
 
 	public void restart() {
-		removeAll();
+		//removeAll();
 		add(new Game( NUM_MINES));
 		SwingUtilities.updateComponentTreeUI(this);
 	}

@@ -23,7 +23,7 @@ import javax.swing.SwingConstants;
 import javax.swing.Timer;
 
 public class Time extends JPanel implements ActionListener, MouseListener {
-	private static final int NUM_MINES = 50;
+	private static final int NUM_MINES = 40;
 	private static final int size = 16;
 
 	private Font sevendigitsfont;
@@ -41,7 +41,7 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 
 		try {
 
-			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\Seven Segment.ttf")).deriveFont(55f);
+			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\Seven Segment.ttf")).deriveFont(55f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
 			ge.registerFont(sevendigitsfont);
@@ -53,14 +53,14 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 
 		Color mavi = new Color(0, 0, 60);
 		Color gri = new Color(200, 200, 200);
-		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\indir.jpg");
-		img2 = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\happy2.png");
+		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
+		img2 = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\happy2.png");
 
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createLineBorder(Color.red));
 		setBackground(Color.black);
 
-		label3.setPreferredSize(new Dimension(50, 50));
+		
 		label3.setForeground(Color.red);
 		label3.setFont(sevendigitsfont);
 
