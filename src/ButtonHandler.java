@@ -53,7 +53,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 	public void actionPerformed(MouseEvent e) {
 	}
-
+	@SuppressWarnings("ResultOfMethodCallIgnored")
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		msg = new ButtonInfo();
