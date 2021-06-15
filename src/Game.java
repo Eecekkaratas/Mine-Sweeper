@@ -28,8 +28,8 @@ public class Game extends JPanel {
 
 		Color mavi = new Color(0, 0, 60);
 		Color gri = new Color(200, 200, 200);
-		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\indir.jpg");
-		img2 = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\happy2.png");
+		img = new ImageIcon(".\\components\\indir.jpg");
+		img2 = new ImageIcon(".\\components\\happy2.png");
 
 		GUI gui = new GUI(this);
 		gui.setBackground(Color.LIGHT_GRAY);

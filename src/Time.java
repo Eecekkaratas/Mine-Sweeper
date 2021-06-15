@@ -41,7 +41,7 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 
 		try {
 
-			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\Seven Segment.ttf")).deriveFont(55f);
+			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File(".\\components\\Seven Segment.ttf")).deriveFont(55f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 
 			ge.registerFont(sevendigitsfont);
@@ -53,8 +53,8 @@ public class Time extends JPanel implements ActionListener, MouseListener {
 
 		Color mavi = new Color(0, 0, 60);
 		Color gri = new Color(200, 200, 200);
-		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
-		img2 = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\happy2.png");
+		img = new ImageIcon(".\\components\\indir.jpg");
+		img2 = new ImageIcon(".\\components\\happy2.png");
 
 		setLayout(new BorderLayout());
 		setBorder(BorderFactory.createLineBorder(Color.red));

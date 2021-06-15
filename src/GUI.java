@@ -44,8 +44,8 @@ public class GUI extends JPanel implements ActionListener {
 		Color mavi = new Color(0, 0, 60);
 		Color gri = new Color(238, 238, 238);
 		
-		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
-		img_happy = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\happy.jpg");
+		img = new ImageIcon(".\\components\\indir.jpg");
+		img_happy = new ImageIcon(".\\components\\happy.jpg");
 
 		Border raisedbevel = BorderFactory.createRaisedBevelBorder();
 		Border loweredbevel = BorderFactory.createLoweredBevelBorder();

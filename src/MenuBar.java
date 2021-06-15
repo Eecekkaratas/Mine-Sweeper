@@ -39,7 +39,7 @@ public class MenuBar extends JMenuBar  {
 			MenuBar menubar = new MenuBar();
 			ImageIcon img;
 
-			img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
+			img = new ImageIcon(".\\components\\indir.jpg");
 			
 			
 			JFrame frame = new JFrame("Mine Sweeper | # of mines: " + easy_mine);
@@ -73,7 +73,7 @@ public class MenuBar extends JMenuBar  {
 			MenuBar menubar = new MenuBar();
 			ImageIcon img;
 
-			img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\indir.jpg");
+			img = new ImageIcon(".\\src\\components\\indir.jpg");
 			
 					
 			JFrame frame = new JFrame("Mine Sweeper | # of mines: " + hard_mine + "  Difficult mode");
@@ -103,7 +103,7 @@ public class MenuBar extends JMenuBar  {
 	JMenuItem m4 = new JMenuItem("How to play?");
 	m4.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent m) {
-				ImageIcon how = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\howtoplay.jpeg");
+				ImageIcon how = new ImageIcon(".\\src\\components\\howtoplay.jpeg");
 		
 				JFrame jf = new JFrame("Nasýl Oynanýr ?");
 				

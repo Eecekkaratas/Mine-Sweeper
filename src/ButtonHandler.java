@@ -36,8 +36,8 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	ImageIcon img_empty;
 	ImageIcon img_sad;
 	ImageIcon img_xmayin;
-	ImageIcon img_shock = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\surpriz.jpg");
-	ImageIcon img_happy = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\happy.jpg");
+	ImageIcon img_shock = new ImageIcon(".\\components\\surpriz.jpg");
+	ImageIcon img_happy = new ImageIcon(".\\components\\happy.jpg");
 
 	public ButtonInfo msg;
 	// private KalanMineSayýsý kms;
@@ -58,11 +58,11 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	public void mouseClicked(MouseEvent e) {
 		msg = new ButtonInfo();
 
-		img_flag = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\flag.png");
-		img_mine = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\mayin.png");
-		img_empty = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\empty.png");
-		img_xmayin = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\xmayin.png");
-		img_sad = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper\\sad.jpg");
+		img_flag = new ImageIcon(".\\components\\flag.png");
+		img_mine = new ImageIcon(".\\components\\mayin.png");
+		img_empty = new ImageIcon(".\\components\\empty.png");
+		img_xmayin = new ImageIcon(".\\components\\xmayin.png");
+		img_sad = new ImageIcon(".\\components\\sad.jpg");
 
 		ButtonClass button = (ButtonClass) e.getSource();
 
