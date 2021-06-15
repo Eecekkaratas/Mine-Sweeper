@@ -36,8 +36,8 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	ImageIcon img_empty;
 	ImageIcon img_sad;
 	ImageIcon img_xmayýn;
-	ImageIcon img_shock = new ImageIcon("surpriz.jpg");
-	ImageIcon img_happy = new ImageIcon("happy2.png");
+	ImageIcon img_shock = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\surpriz.jpg");
+	ImageIcon img_happy = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\happy2.png");
 
 	public ButtonInfo msg;
 	// private KalanMineSayýsý kms;
@@ -58,11 +58,11 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	public void mouseClicked(MouseEvent e) {
 		msg = new ButtonInfo();
 
-		img_flag = new ImageIcon("flag.png");
-		img_mine = new ImageIcon("mayin.png");
-		img_empty = new ImageIcon("empty.png");
-		img_xmayýn = new ImageIcon("xmayin.png");
-		img_sad = new ImageIcon("sad.png");
+		img_flag = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\flag.png");
+		img_mine = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\mayin.png");
+		img_empty = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\empty.png");
+		img_xmayýn = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\xmayin.png");
+		img_sad = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\sad.png");
 
 		ButtonClass button = (ButtonClass) e.getSource();
 
@@ -81,18 +81,17 @@ public class ButtonHandler implements MouseListener, ActionListener {
 							if (grid.getCellContent(i, k) == -1) {
 								open(i, k);
 								button.setBackground(Color.red);
-								
+
 							}
 
 						}
 					}
 					for (int i = 0; i < size; i++) {
 						for (int k = 0; k < size; k++) {
-							
+
 							if (grid.getCellContent(i, k) != -1 && msg.getButtonInfoY()[i][k].isFlag()) {
 								msg.getButtonInfoY()[i][k].setIcon(img_xmayýn);
 							}
-
 
 						}
 
@@ -173,7 +172,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 		msg = new ButtonInfo();
 		try {
-			
+
 			if (grid.getCellContent(i, j) == -1) {
 				msg.getButtonInfoY()[i][j].setIcon(img_mine);
 				msg.getButtonInfoY()[i][j].setOpen(true);
@@ -409,7 +408,6 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 	@Override
 	public void mouseEntered(MouseEvent e) {
-		
 
 	}
 

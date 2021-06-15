@@ -37,7 +37,7 @@ public class MineSweeper {
 		MenuBar menubar = new MenuBar();
 		ImageIcon img;
 
-		img = new ImageIcon("indir.jpg");
+		img = new ImageIcon("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\indir.jpg");
 		
 				
 		JFrame frame = new JFrame("\"Mine Sweeper | # of mines: " + NUM_MINES);

@@ -38,7 +38,7 @@ public class Counter extends JPanel {
 
 		try {
 			
-			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("Seven Segment.ttf")).deriveFont(55f);
+			sevendigitsfont = Font.createFont(Font.TRUETYPE_FONT, new File("C:\\Users\\eceka\\eclipse-workspace\\project02-minesweeper-project02\\project02-minesweeper-project02\\Seven Segment.ttf")).deriveFont(55f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
 		
 			ge.registerFont(sevendigitsfont);
