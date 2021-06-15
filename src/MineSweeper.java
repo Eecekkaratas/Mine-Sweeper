@@ -40,7 +40,7 @@ public class MineSweeper {
 		img = new ImageIcon("indir.jpg");
 		
 				
-		JFrame frame = new JFrame("Mayýn Tarlasý");
+		JFrame frame = new JFrame("\"Mine Sweeper | # of mines: " + NUM_MINES);
 		frame.setIconImage(img.getImage());
 		
 		frame.setJMenuBar(menubar);
