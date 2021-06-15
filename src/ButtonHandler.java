@@ -22,7 +22,7 @@ import java.util.ArrayList;
 
 public class ButtonHandler implements MouseListener, ActionListener {
 	private static final int NUM_MINES = 50;
-	private static final int size = 20;
+	private static final int size = 16;
 	private int row;
 	private int col;
 	private MineGrid grid;
@@ -48,7 +48,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 		row = x;
 		col = y;
 		grid = g;
-		
+
 	}
 
 	public void actionPerformed(MouseEvent e) {
@@ -57,19 +57,16 @@ public class ButtonHandler implements MouseListener, ActionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		msg = new ButtonInfo();
-		
 
 		img_flag = new ImageIcon("flag.png");
 		img_mine = new ImageIcon("mayin.png");
 		img_empty = new ImageIcon("empty.png");
-		img_xmayýn = new ImageIcon("xmayýn.png");
+		img_xmayýn = new ImageIcon("xmayin.png");
 		img_sad = new ImageIcon("sad.png");
 
 		ButtonClass button = (ButtonClass) e.getSource();
 
-		
-
-		if (button.isLeftClicked() == false) {
+		if (button.isOpen() == false) {
 			if (e.getButton() == 1 && !button.isFlag()) { // sol týklanýrsa
 
 				if (grid.isMine(row, col)) {
@@ -77,81 +74,31 @@ public class ButtonHandler implements MouseListener, ActionListener {
 					GUI.setFace(img_sad);
 					GUI.time.stop();
 					JOptionPane.showMessageDialog(null, "   GAME OVER  !!!");
-					
-					for (int i = 0; i <= size; i++) {
-						for (int k = 0; k <= size; k++) {
-							if (button.isFlag() && grid.getCellContent(i, k) == - 1) {
-									button.setIcon(img_xmayýn);
-									System.out.println("olllol");
-									 button.setEnabled(true);
-				}else if (button.isFlag()){
-					System.out.println("tersi");
-				}
-						}}
-					
-					for (int i = 0; i <= size; i++) {
-						for (int k = 0; k <= size; k++) {
+
+					for (int i = 0; i < size; i++) {
+						for (int k = 0; k < size; k++) {
+							msg.getButtonInfoY()[i][k].setOpen(true);
 							if (grid.getCellContent(i, k) == -1) {
 								open(i, k);
 								button.setBackground(Color.red);
+								
 							}
-							
+
 						}
 					}
 					for (int i = 0; i < size; i++) {
 						for (int k = 0; k < size; k++) {
-						
-							
-							if (grid.getCellContent(i, k) == 1) {
-								
-								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
-								    protected Color getDisabledTextColor() {
-								        return Color.blue;
-								    }
-								});
-								msg.getButtonInfoY()[i][k].setEnabled(false);
-							}if (grid.getCellContent(i, k) == 2) {
-								
-								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
-								    protected Color getDisabledTextColor() {
-								        return new Color(50, 185, 50);
-								    }
-								});
-								msg.getButtonInfoY()[i][k].setEnabled(false);	
-							}if (grid.getCellContent(i, k) == 3) {
-							
-								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
-								    protected Color getDisabledTextColor() {
-								        return Color.red;
-								    }
-								});
-								msg.getButtonInfoY()[i][k].setEnabled(false);	
-							}if (grid.getCellContent(i, k) == 4) {
-								
-								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
-								    protected Color getDisabledTextColor() {
-								        return new Color(148, 0, 211);
-								    }
-								});
-								msg.getButtonInfoY()[i][k].setEnabled(false);	
-							}if (grid.getCellContent(i, k) == 5) {
-								
-								msg.getButtonInfoY()[i][k].setUI(new MetalButtonUI() {
-								    protected Color getDisabledTextColor() {
-								        return Color.YELLOW;
-								    }
-								});
-								msg.getButtonInfoY()[i][k].setEnabled(false);	
-							}						
-							
+							if (grid.getCellContent(i, k) != -1 && !button.isFlag()) {
+								msg.getButtonInfoY()[i][k].setIcon(img_xmayýn);
+							}
+
 						}
+
 					}
-					
-					// System.exit(0);
+
 				} else {
 					if (e.getSource() instanceof ButtonClass) {
 						ButtonClass[][] buttons = msg.getButtonInfoY();
-						
 
 						if (grid.getCellContent(row, col) == 0) {
 							clear(row, col);
@@ -160,11 +107,14 @@ public class ButtonHandler implements MouseListener, ActionListener {
 						}
 
 						msg.setButtonInfoY(buttons);
-						
+
 					}
 				}
 				button.setLeftCick(true);
-			} else if (e.getButton() == 3) { // sað týklanýrsa
+
+			} else if (e.getButton() == 3)
+
+			{ // sað týklanýrsa
 
 				if (!button.isFlag()) {
 					button.setIcon(img_flag);
@@ -201,17 +151,17 @@ public class ButtonHandler implements MouseListener, ActionListener {
 		if (success == NUM_MINES) {
 			JOptionPane.showMessageDialog(null, "   You are a genius  !!!");
 		} else {
-			
+
 		}
 
 	}
 
 	public void open(int i, int j) {
 		try {
-			
+
 			font = Font.createFont(Font.TRUETYPE_FONT, new File("mine-sweeper.ttf")).deriveFont(12f);
 			GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
-			
+
 			ge.registerFont(font);
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -236,17 +186,58 @@ public class ButtonHandler implements MouseListener, ActionListener {
 				msg.getButtonInfoY()[i][j].setText((String.valueOf(grid.getCellContent(i, j))));
 				if (grid.getCellContent(i, j) == 1) {
 					msg.getButtonInfoY()[i][j].setForeground(Color.blue);
+					msg.getButtonInfoY()[i][j].setEnabled(false);
+					msg.getButtonInfoY()[i][j].setUI(new MetalButtonUI() {
+						protected Color getDisabledTextColor() {
+							return Color.blue;
+						}
+					});
 				} else if (grid.getCellContent(i, j) == 2) {
 					msg.getButtonInfoY()[i][j].setForeground(new Color(50, 185, 50));
+					msg.getButtonInfoY()[i][j].setEnabled(false);
+					msg.getButtonInfoY()[i][j].setUI(new MetalButtonUI() {
+
+						protected Color getDisabledTextColor() {
+							return new Color(50, 185, 50);
+						}
+					});
 				} else if (grid.getCellContent(i, j) == 3) {
 					msg.getButtonInfoY()[i][j].setForeground(Color.red);
-				} else if (grid.getCellContent(i, j) == 4) {
+					msg.getButtonInfoY()[i][j].setEnabled(false);
+					msg.getButtonInfoY()[i][j].setUI(new MetalButtonUI() {
+						protected Color getDisabledTextColor() {
+							return Color.red;
+						}
+					});
+				} else if (grid.getCellContent(i, j) == 4)
+
+				{
 					msg.getButtonInfoY()[i][j].setForeground(new Color(148, 0, 211));
-				} else {
+					msg.getButtonInfoY()[i][j].setEnabled(false);
+					msg.getButtonInfoY()[i][j].setUI(new MetalButtonUI() {
+						protected Color getDisabledTextColor() {
+							return new Color(148, 0, 211);
+						}
+					});
+				} else if (grid.getCellContent(i, j) == 5) {
 					msg.getButtonInfoY()[i][j].setForeground(Color.yellow);
+					msg.getButtonInfoY()[i][j].setEnabled(false);
+					msg.getButtonInfoY()[i][j].setUI(new MetalButtonUI() {
+						protected Color getDisabledTextColor() {
+							return Color.YELLOW;
+						}
+					});
+				} else {
+					msg.getButtonInfoY()[i][j].setForeground(Color.CYAN);
+					msg.getButtonInfoY()[i][j].setEnabled(false);
+					msg.getButtonInfoY()[i][j].setUI(new MetalButtonUI() {
+						protected Color getDisabledTextColor() {
+							return Color.cyan;
+						}
+					});
 				}
 				msg.getButtonInfoY()[i][j].setOpen(true);
-				
+
 			}
 		} catch (ArrayIndexOutOfBoundsException e) {
 			// System.out.println("Hata: ArrayIndexOutOfBoundsException ");

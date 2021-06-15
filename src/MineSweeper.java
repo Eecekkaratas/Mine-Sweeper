@@ -27,7 +27,7 @@ import javax.swing.plaf.ColorUIResource;
 public class MineSweeper {
 
 	private static final int NUM_MINES = 50;
-	private static final int size = 20;
+	private static final int size = 16;
 
 	public static void main(String[] args) {
 		
@@ -56,7 +56,7 @@ public class MineSweeper {
 		
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setBackground(Color.LIGHT_GRAY);
-		frame.setSize(600, 650);
+		frame.setSize(550, 600);
 		//System.out.println(frame.getSize());
 		frame.setResizable(false);
 		frame.setVisible(true);

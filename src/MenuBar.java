@@ -20,7 +20,7 @@ import javax.swing.border.EmptyBorder;
 
 
 public class MenuBar extends JMenuBar  {
-	private static final int size = 20;
+	private static final int size = 16;
 	static MineSweeperGUI msg;
 	
 	public MenuBar() {

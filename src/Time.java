@@ -24,7 +24,7 @@ import javax.swing.Timer;
 
 public class Time extends JPanel implements ActionListener, MouseListener {
 	private static final int NUM_MINES = 50;
-	private static final int size = 20;
+	private static final int size = 16;
 
 	private Font sevendigitsfont;
 

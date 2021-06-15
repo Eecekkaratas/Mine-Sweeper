@@ -12,7 +12,7 @@ import javax.swing.border.Border;
 
 public class Game extends JPanel {
 	private static final int NUM_MINES = 50;
-	private static final int orta_size = 20;
+	private static final int orta_size = 16;
 	private static final int kolay_size = 15;
 	private static final int zor_size = 15;
 
