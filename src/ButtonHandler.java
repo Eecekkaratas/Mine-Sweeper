@@ -88,9 +88,11 @@ public class ButtonHandler implements MouseListener, ActionListener {
 					}
 					for (int i = 0; i < size; i++) {
 						for (int k = 0; k < size; k++) {
-							if (grid.getCellContent(i, k) != -1 && !button.isFlag()) {
+							
+							if (grid.getCellContent(i, k) != -1 && msg.getButtonInfoY()[i][k].isFlag()) {
 								msg.getButtonInfoY()[i][k].setIcon(img_xmayýn);
 							}
+
 
 						}
 
@@ -171,6 +173,7 @@ public class ButtonHandler implements MouseListener, ActionListener {
 
 		msg = new ButtonInfo();
 		try {
+			
 			if (grid.getCellContent(i, j) == -1) {
 				msg.getButtonInfoY()[i][j].setIcon(img_mine);
 				msg.getButtonInfoY()[i][j].setOpen(true);
